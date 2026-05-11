@@ -1,9 +1,0 @@
-{
-  "name": "evidence-capture",
-  "version": "1.0.0",
-  "description": "Terminal, browser, and computer automation for testing, demos, QA, and proof artifacts",
-  "author": {
-    "name": "Capxul",
-    "email": "hermes@abuusama.dev"
-  }
-}

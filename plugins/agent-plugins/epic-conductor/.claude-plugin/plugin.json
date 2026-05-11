@@ -1,9 +1,0 @@
-{
-  "name": "epic-conductor",
-  "version": "1.0.0",
-  "description": "Plans epics, breaks them into Linear issues, assigns work to coding agents, tracks completion, and generates reports",
-  "author": {
-    "name": "Capxul",
-    "email": "hermes@abuusama.dev"
-  }
-}

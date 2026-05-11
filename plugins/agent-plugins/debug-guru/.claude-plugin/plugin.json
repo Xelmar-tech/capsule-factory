@@ -1,9 +1,0 @@
-{
-  "name": "debug-guru",
-  "version": "1.0.0",
-  "description": "Browser automation, frontend design review, API interception and debugging across the full stack",
-  "author": {
-    "name": "Capxul",
-    "email": "hermes@abuusama.dev"
-  }
-}
