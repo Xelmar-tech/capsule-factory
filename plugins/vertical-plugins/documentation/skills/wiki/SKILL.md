@@ -3,13 +3,13 @@ name: wiki
 version: 1.0.0
 description: |
   Generate comprehensive codebase documentation for a repository.
-  Uploads the wiki to view in the Factory app.
+  Use when the user asks to document a repo, build a wiki, or produce a docs tree.
 user-invocable: true
 ---
 
 # Wiki generation
 
-Read a repository, then produce a set of interconnected documentation pages that explain what the code does and how it fits together. The output is a `droid-wiki/` directory of markdown files, uploaded to Factory via `droid wiki-upload`.
+Read a repository, then produce a set of interconnected documentation pages that explain what the code does and how it fits together. The output is a `wiki/` directory of markdown files at the repo root, left on disk for the user to review, publish, or commit as they see fit.
 
 ## 1. Survey the repository
 
@@ -634,43 +634,11 @@ After generating all pages, create `.wiki-meta.json` in the wiki directory root.
 
 The example above is abbreviated. In practice, list every `.md` file in the wiki directory. The order must match the page ordering defined in Section 2: overview → by-the-numbers → lore → fun-facts → how-to-contribute → lenses → conditional → reference → maintainers.
 
-## 5. Upload
+## 5. Hand off
 
-### Standard upload (local wiki directory)
+When generation completes, summarize what was produced (page count, top-level sections, any subsystems that were intentionally skipped with the reason). Leave the `wiki/` directory on disk at the repo root. The user decides whether to commit it, publish it to a docs site, or feed it into another pipeline; this skill does not perform an upload step.
 
-When the user wants to keep a local copy (the default):
-
-```bash
-droid wiki-upload \
-  --repo-url "$REPO_URL" \
-  --wiki-dir ./droid-wiki
-```
-
-Arguments:
-
-- `--repo-url` — the repository URL (the remote origin, e.g., `https://github.com/org/repo`)
-- `--wiki-dir` — path to the directory containing the generated markdown files
-- `--cleanup` — (optional) delete the wiki directory after a successful upload
-
-### Remote-only upload (--no-local handling)
-
-When the user asks to generate the wiki without leaving files on disk (e.g., the user says "don't leave files locally" or passes a `--no-local` flag):
-
-```bash
-# Create a temporary directory
-WIKI_TMPDIR=$(mktemp -d)
-
-# Write all wiki files to the temporary directory instead of ./droid-wiki
-# ... generate pages into $WIKI_TMPDIR ...
-
-# Upload with --cleanup to remove the temp directory after success
-droid wiki-upload \
-  --repo-url "$REPO_URL" \
-  --wiki-dir "$WIKI_TMPDIR" \
-  --cleanup
-```
-
-The `--cleanup` flag tells the CLI to delete the `--wiki-dir` directory after a successful upload. If the upload fails, the directory is preserved so the user can retry.
+If the user asked for the wiki to be produced without leaving files on disk, write to a `mktemp -d` directory instead and report the path; the user can move, archive, or delete it from there.
 
 ## Content principles
 
@@ -741,7 +709,7 @@ Include at least one Mermaid diagram in the architecture page. Include diagrams 
 The generated wiki follows this layout:
 
 ```
-droid-wiki/
+wiki/
 ├── .wiki-meta.json
 
 # Always present (in this order)
