@@ -1,6 +1,6 @@
 ---
-name: droid-cli
-description: Background knowledge for droid-control workflows -- not invoked directly. Droid CLI target patterns, shortcuts, modes, and launch helpers.
+name: agent-cli
+description: Background knowledge for agent-control workflows -- not invoked directly. Droid CLI target patterns, shortcuts, modes, and launch helpers.
 user-invocable: false
 ---
 

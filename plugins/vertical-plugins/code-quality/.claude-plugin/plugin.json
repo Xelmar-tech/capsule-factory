@@ -1,0 +1,5 @@
+{
+  "name": "code-quality",
+  "version": "1.0.0",
+  "description": "PR lifecycle, code review, and TypeScript best practices."
+}

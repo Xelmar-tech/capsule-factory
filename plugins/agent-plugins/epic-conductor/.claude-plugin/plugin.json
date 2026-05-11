@@ -1,0 +1,5 @@
+{
+  "name": "epic-conductor",
+  "version": "1.0.0",
+  "description": "Master controller agent that orchestrates the team, plans epics, and routes work."
+}

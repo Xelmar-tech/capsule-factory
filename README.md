@@ -24,12 +24,12 @@ A cohesive plugin ecosystem for managing Capxul's AI agent workforce. Built for 
 ## Quick Start
 
 ```bash
-# Install the entire team
-/install-team
+# Add this marketplace
+/plugin marketplace add Xelmar-tech/capsule-factory
 
-# Or install individual plugins
-/claude-plugin install pm-core
-/claude-plugin install epic-conductor
+# Then install individual plugins
+/plugin install pm-core@capsule-factory
+/plugin install epic-conductor@capsule-factory
 ```
 
 ## Architecture

@@ -1,5 +1,5 @@
 ---
-name: droid-control
+name: agent-control
 description: Control terminal TUIs and web/Electron apps for testing, demos, QA, and computer-use tasks. Use when you need to automate a CLI, drive a browser, record a demo, or capture proof artifacts.
 ---
 

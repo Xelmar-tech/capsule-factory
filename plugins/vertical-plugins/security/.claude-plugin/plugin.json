@@ -1,0 +1,5 @@
+{
+  "name": "security",
+  "version": "1.0.0",
+  "description": "Security scanning, vulnerability validation, and threat modeling."
+}

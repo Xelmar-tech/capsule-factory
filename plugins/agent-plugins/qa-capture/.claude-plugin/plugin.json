@@ -1,0 +1,5 @@
+{
+  "name": "qa-capture",
+  "version": "1.0.0",
+  "description": "Records demos, verifies claims, runs QA flows, and captures evidence."
+}

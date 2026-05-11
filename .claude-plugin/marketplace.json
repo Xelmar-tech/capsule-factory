@@ -1,160 +1,78 @@
 {
   "name": "capsule-factory",
-  "version": "1.0.0",
-  "description": "Capxul Agent Team — A cohesive plugin ecosystem for managing Capxul's AI agent workforce. 7 vertical plugins with shared skills and commands, 6 agent plugins with specialized agent definitions.",
-  "author": "Capxul",
-  "license": "MIT",
+  "owner": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com"
+  },
+  "metadata": {
+    "description": "Capxul Agent Team — a cohesive plugin ecosystem for managing Capxul's AI agent workforce. 7 vertical plugins providing shared skills and commands, plus 6 agent plugins with specialized agent definitions.",
+    "version": "1.0.0"
+  },
   "plugins": [
     {
-      "id": "pm-core",
-      "name": "PM Core",
-      "type": "vertical",
-      "path": "plugins/vertical-plugins/pm-core",
-      "description": "Linear epic planning, PM reporting, and agent orchestration",
-      "commands": ["/plan-epic", "/report", "/orchestrate"],
-      "skills": ["linear-epic-planning", "pm-reporting", "agent-orchestrator"],
-      "mcpDependencies": ["linear", "github"]
+      "name": "pm-core",
+      "source": "./plugins/vertical-plugins/pm-core",
+      "description": "Linear epic planning, PM reporting, and agent orchestration."
     },
     {
-      "id": "code-quality",
-      "name": "Code Quality",
-      "type": "vertical",
-      "path": "plugins/vertical-plugins/code-quality",
-      "description": "PR lifecycle, code review, and TypeScript best practices",
-      "commands": ["/pr", "/review-pr", "/simplify"],
-      "skills": ["create-pr", "follow-up-on-pr", "simplify", "ban-type-assertions", "no-use-effect", "fix-knip-unused-exports"],
-      "mcpDependencies": ["github"]
+      "name": "code-quality",
+      "source": "./plugins/vertical-plugins/code-quality",
+      "description": "PR lifecycle, code review, and TypeScript best practices."
     },
     {
-      "id": "security",
-      "name": "Security",
-      "type": "vertical",
-      "path": "plugins/vertical-plugins/security",
-      "description": "Security scanning, vulnerability validation, and threat modeling",
-      "commands": ["/security-scan", "/threat-model"],
-      "skills": ["security-review", "commit-security-scan", "vulnerability-validation", "threat-model-generation"],
-      "mcpDependencies": ["github"]
+      "name": "security",
+      "source": "./plugins/vertical-plugins/security",
+      "description": "Security scanning, vulnerability validation, and threat modeling."
     },
     {
-      "id": "evidence-capture",
-      "name": "Evidence Capture",
-      "type": "vertical",
-      "path": "plugins/vertical-plugins/evidence-capture",
-      "description": "Demo recording, verification, QA testing, and video composition with Remotion",
-      "commands": ["/demo", "/verify", "/qa-test"],
-      "skills": ["capture", "compose", "verify", "showcase", "tuistory", "pty-capture", "true-input", "agent-browser", "agent-control", "agent-cli"],
-      "binaries": ["bin/tctl"],
-      "scripts": ["scripts/render-showcase.sh"],
-      "remotion": "remotion/",
-      "mcpDependencies": []
+      "name": "evidence-capture",
+      "source": "./plugins/vertical-plugins/evidence-capture",
+      "description": "Demo recording, verification, QA testing, and video composition with Remotion."
     },
     {
-      "id": "research",
-      "name": "Research",
-      "type": "vertical",
-      "path": "plugins/vertical-plugins/research",
-      "description": "Code exploration and optimization experiments",
-      "commands": ["/experiment", "/explore"],
-      "skills": ["autoresearch", "code-spelunker"],
-      "mcpDependencies": []
+      "name": "research",
+      "source": "./plugins/vertical-plugins/research",
+      "description": "Code exploration and optimization experiments."
     },
     {
-      "id": "documentation",
-      "name": "Documentation",
-      "type": "vertical",
-      "path": "plugins/vertical-plugins/documentation",
-      "description": "Wiki generation, humanized writing, and visual design",
-      "commands": ["/wiki", "/humanize", "/design"],
-      "skills": ["wiki", "human-writing", "visual-design"],
-      "mcpDependencies": []
+      "name": "documentation",
+      "source": "./plugins/vertical-plugins/documentation",
+      "description": "Wiki generation, humanized writing, and visual design."
     },
     {
-      "id": "debugging",
-      "name": "Debugging",
-      "type": "vertical",
-      "path": "plugins/vertical-plugins/debugging",
-      "description": "Browser navigation, frontend debugging, API interception, and skill creation",
-      "commands": ["/debug-api", "/create-skill"],
-      "skills": ["browser-navigation", "frontend-design", "http-toolkit-intercept", "skill-creation"],
-      "mcpDependencies": []
+      "name": "debugging",
+      "source": "./plugins/vertical-plugins/debugging",
+      "description": "Browser navigation, frontend debugging, API interception, and skill creation."
     },
     {
-      "id": "epic-conductor",
-      "name": "Epic Conductor Agent",
-      "type": "agent",
-      "path": "plugins/agent-plugins/epic-conductor",
-      "description": "Master controller agent that orchestrates the entire team, plans epics, and routes work",
-      "agent": "agents/epic-conductor.md",
-      "skills": ["scribe"],
-      "verticalDependencies": ["pm-core", "code-quality", "security", "evidence-capture", "research", "documentation", "debugging"]
+      "name": "epic-conductor",
+      "source": "./plugins/agent-plugins/epic-conductor",
+      "description": "Master controller agent that orchestrates the team, plans epics, and routes work."
     },
     {
-      "id": "implementer",
-      "name": "Implementer Agent",
-      "type": "agent",
-      "path": "plugins/agent-plugins/implementer",
-      "description": "Implements features, manages PR lifecycle, and ensures code quality",
-      "agent": "agents/implementer.md",
-      "skills": ["pr-lifecycle"],
-      "verticalDependencies": ["code-quality", "evidence-capture", "debugging"]
+      "name": "implementer",
+      "source": "./plugins/agent-plugins/implementer",
+      "description": "Implements features, manages PR lifecycle, and ensures code quality."
     },
     {
-      "id": "analyst",
-      "name": "Analyst Agent",
-      "type": "agent",
-      "path": "plugins/agent-plugins/analyst",
-      "description": "Security scanning, threat modeling, and deep-dive analysis",
-      "agent": "agents/analyst.md",
-      "skills": ["security-deep-dive"],
-      "verticalDependencies": ["security", "research", "evidence-capture"]
+      "name": "analyst",
+      "source": "./plugins/agent-plugins/analyst",
+      "description": "Security scanning, threat modeling, and deep-dive analysis."
     },
     {
-      "id": "reporter",
-      "name": "Reporter Agent",
-      "type": "agent",
-      "path": "plugins/agent-plugins/reporter",
-      "description": "Generates reports, documentation, and visual presentations",
-      "agent": "agents/reporter.md",
-      "skills": ["report-generation"],
-      "verticalDependencies": ["documentation", "pm-core", "evidence-capture"]
+      "name": "reporter",
+      "source": "./plugins/agent-plugins/reporter",
+      "description": "Generates reports, documentation, and visual presentations."
     },
     {
-      "id": "qa-capture",
-      "name": "QA Capture Agent",
-      "type": "agent",
-      "path": "plugins/agent-plugins/qa-capture",
-      "description": "Records demos, verifies claims, runs QA flows, and captures evidence",
-      "agent": "agents/qa-capture.md",
-      "skills": ["evidence-pipeline"],
-      "verticalDependencies": ["evidence-capture"]
+      "name": "qa-capture",
+      "source": "./plugins/agent-plugins/qa-capture",
+      "description": "Records demos, verifies claims, runs QA flows, and captures evidence."
     },
     {
-      "id": "debug-guru",
-      "name": "Debug Guru Agent",
-      "type": "agent",
-      "path": "plugins/agent-plugins/debug-guru",
-      "description": "Debugs APIs, navigates browsers, designs frontends, and creates skills",
-      "agent": "agents/debug-guru.md",
-      "skills": ["debug-pipeline"],
-      "verticalDependencies": ["debugging", "evidence-capture", "research"]
+      "name": "debug-guru",
+      "source": "./plugins/agent-plugins/debug-guru",
+      "description": "Debugs APIs, navigates browsers, designs frontends, and creates skills."
     }
-  ],
-  "installCommand": "/install-team",
-  "mcpServers": {
-    "linear": {
-      "command": "npx",
-      "args": ["-y", "@linear/mcp-server"],
-      "env": ["LINEAR_API_KEY"]
-    },
-    "github": {
-      "command": "npx",
-      "args": ["-y", "@github/mcp-server"],
-      "env": ["GITHUB_PERSONAL_ACCESS_TOKEN"]
-    },
-    "bitwarden": {
-      "command": "npx",
-      "args": ["-y", "@bitwarden/sdk-napi"],
-      "env": ["BW_ACCESS_TOKEN"]
-    }
-  }
+  ]
 }

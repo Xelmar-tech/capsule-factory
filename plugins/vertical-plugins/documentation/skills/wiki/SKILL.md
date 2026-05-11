@@ -5,7 +5,6 @@ description: |
   Generate comprehensive codebase documentation for a repository.
   Uploads the wiki to view in the Factory app.
 user-invocable: true
-disable-model-invocation: true
 ---
 
 # Wiki generation
