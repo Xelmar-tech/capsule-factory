@@ -2,78 +2,46 @@
 name: visual-design
 version: 4.0.0
 description: |
-  Image generation and presentations.
-  Use when the user asks for images, logos, icons, app assets, or slide decks.
+  Image generation and presentations. Use when:
+  - User asks for images: logos, icons, app assets, diagrams, flowcharts,
+    architecture diagrams, patterns, textures, photo edits, restorations
+  - User needs a presentation or slide deck
+  Covers nanobanana CLI for image generation and Slidev for presentations.
 ---
 
-# Visual Design
+# Visual design
 
-Create images and presentations.
+Image generation and presentations.
 
-## Image Generation
+## Image generation
 
-Generate images from prompts:
+Create and edit images from the command line using nanobanana CLI.
+
 ```bash
-# Logos
+npm install -g @factory/nanobanana
+export GEMINI_API_KEY="your-key"
+
 nanobanana generate "company logo" --count=4 --styles=modern,minimal
-
-# Icons
+nanobanana edit photo.png "remove background"
 nanobanana icon "settings gear" --style=flat
-
-# Diagrams
 nanobanana diagram "auth flow" --type=flowchart
 ```
 
+Handles: logos, icons, diagrams, patterns, photo restoration, UI assets, visual sequences.
+
+See: [image-generation.md](./image-generation.md)
+
 ## Presentations
 
-Create slides with Slidev:
+Create slides using Slidev, a markdown-based presentation tool.
+
 ```bash
-# Initialize
 npm init slidev@latest
-
-# Dev server
-slidev
-
-# Export
-slidev export --format pptx
-slidev build  # hostable SPA
+slidev                    # dev server
+slidev export --format pptx   # export to PowerPoint
+slidev build              # build as hostable SPA
 ```
 
-Write slides in markdown:
-```markdown
----
-# Title Slide
+Write slides in markdown, get code highlighting, animations, diagrams, and Vue components.
 
-Subtitle here
----
-
-# Content Slide
-
-- Bullet point 1
-- Bullet point 2
-
-```ts
-const example = "code highlighting"
-```
----
-
-# Diagram Slide
-
-```mermaid
-graph LR
-  A --> B --> C
-```
-```
-
-## Use Cases
-
-- **Architecture diagrams**: system overview
-- **Flowcharts**: process documentation
-- **Slide decks**: exec presentations, team updates
-- **Icons/assets**: UI components
-- **Photo edits**: background removal, restoration
-
-## Output
-
-- Images: PNG, SVG
-- Presentations: PPTX, PDF, or hostable HTML
+See: [presentations.md](./presentations.md) and [reference-slide-example.md](./reference-slide-example.md)

@@ -1,9 +1,0 @@
-{
-  "name": "pm-core",
-  "version": "1.0.0",
-  "description": "Core project management: Linear epic planning, progress reporting, and agent orchestration",
-  "author": {
-    "name": "Capxul",
-    "email": "hermes@abuusama.dev"
-  }
-}

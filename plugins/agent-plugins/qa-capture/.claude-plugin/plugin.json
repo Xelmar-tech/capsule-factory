@@ -1,9 +1,0 @@
-{
-  "name": "qa-capture",
-  "version": "1.0.0",
-  "description": "Captures evidence: screenshots, demo videos, terminal recordings. Verifies deliverables and produces proof packs",
-  "author": {
-    "name": "Capxul",
-    "email": "hermes@abuusama.dev"
-  }
-}

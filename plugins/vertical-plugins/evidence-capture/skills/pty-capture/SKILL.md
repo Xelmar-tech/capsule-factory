@@ -1,73 +1,31 @@
 ---
 name: pty-capture
-version: 1.0.0
-description: |
-  Capture raw terminal byte sequences for low-level debugging.
-  Use when investigating keyboard encoding, escape sequences, or terminal rendering issues.
+description: Background knowledge for droid-control workflows -- not invoked directly. Capture ground-truth byte sequences from real terminal emulators.
+user-invocable: false
 ---
 
-# PTY Capture
+# PTY Byte Capture
 
-Capture raw terminal bytes for debugging.
+The orchestrator routed you here. Use these mechanics to execute your plan.
 
-## When to Use
+Capture the exact bytes a real terminal emits for a given keystroke. Use this when the question is "what sequence does terminal X send for key Y?" rather than "does the UI look right?"
 
-- Keyboard encoding issues
-- Escape sequence problems
-- Terminal rendering bugs
-- Byte-level verification
+## Platform support
 
-## Workflow
+| Platform | Status | Read |
+|---|---|---|
+| Linux / Wayland | Implemented | [platforms/linux.md](platforms/linux.md) |
+| Windows (KVM) | Implemented | [platforms/windows.md](platforms/windows.md) |
+| macOS (QEMU) | Implemented | [platforms/macos.md](platforms/macos.md) |
 
-### 1. Start Capture
+**Read the platform file for your target OS.** Each contains the capture architecture, prerequisites, usage pattern, and platform-specific notes.
 
-```bash
-script -q /tmp/terminal.log
-```
+## Known dead ends
 
-### 2. Reproduce Issue
+- **Xvfb + xdotool**: bypasses real keyboard processing entirely
+- **uinput + Xvfb**: Xvfb does not consume kernel input devices
+- **SSH PTY for keystroke injection**: distorts the input encoding; SSH is only for output capture or deployment
 
-Perform the interaction that shows the problem.
+## Follow-on
 
-### 3. Stop Capture
-
-```bash
-exit
-```
-
-### 4. Analyze
-
-```bash
-xxd /tmp/terminal.log | head -50
-```
-
-Look for:
-- Escape sequences (`\x1b[`)
-- UTF-8 encoding
-- Control characters
-
-## Platform Notes
-
-### Linux
-- Use `script` or `ttyrec`
-- Wayland: may need `true-input` for real rendering
-
-### macOS
-- `script` available by default
-- Terminal.app vs iTerm2 differences
-
-### Windows
-- Use Windows Terminal or WSL
-- PowerShell: `Start-Transcript`
-
-## Output
-
-- Raw byte log
-- Hex dump for analysis
-- Timing information (if available)
-
-## Anti-patterns
-
-- **Not reproducing the issue**: Capture must include the problem
-- **Analyzing without context**: Need to know what SHOULD happen
-- **Ignoring timing**: Some issues are race conditions
+Feed captured bytes into terminal compatibility fixtures and replay tests in `apps/cli`.

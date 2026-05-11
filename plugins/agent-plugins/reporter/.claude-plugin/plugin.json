@@ -1,9 +1,0 @@
-{
-  "name": "reporter",
-  "version": "1.0.0",
-  "description": "Generates progress reports, velocity metrics, documentation updates, and stakeholder presentations",
-  "author": {
-    "name": "Capxul",
-    "email": "hermes@abuusama.dev"
-  }
-}
