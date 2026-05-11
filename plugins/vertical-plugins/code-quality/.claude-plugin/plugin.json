@@ -1,0 +1,9 @@
+{
+  "name": "code-quality",
+  "version": "1.0.0",
+  "description": "Code review and quality enforcement: PR lifecycle, TypeScript rules, lint gates",
+  "author": {
+    "name": "Capxul",
+    "email": "hermes@abuusama.dev"
+  }
+}

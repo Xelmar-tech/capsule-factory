@@ -1,0 +1,9 @@
+{
+  "name": "debugging",
+  "version": "1.0.0",
+  "description": "Browser automation, frontend design review, HTTP interception, and API debugging",
+  "author": {
+    "name": "Capxul",
+    "email": "hermes@abuusama.dev"
+  }
+}

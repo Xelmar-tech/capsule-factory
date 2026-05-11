@@ -1,0 +1,9 @@
+{
+  "name": "implementer",
+  "version": "1.0.0",
+  "description": "Manages PR lifecycle: creates PRs with proper conventions, follows up on reviews, enforces TypeScript rules",
+  "author": {
+    "name": "Capxul",
+    "email": "hermes@abuusama.dev"
+  }
+}

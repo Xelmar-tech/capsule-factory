@@ -1,0 +1,9 @@
+{
+  "name": "research",
+  "version": "1.0.0",
+  "description": "Autonomous optimization loops and codebase exploration: experiment, measure, keep improvements, revert regressions",
+  "author": {
+    "name": "Capxul",
+    "email": "hermes@abuusama.dev"
+  }
+}

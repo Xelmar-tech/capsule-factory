@@ -1,0 +1,9 @@
+{
+  "name": "security",
+  "version": "1.0.0",
+  "description": "Security pipeline: STRIDE threat modeling, commit scanning, vulnerability validation, patch generation",
+  "author": {
+    "name": "Capxul",
+    "email": "hermes@abuusama.dev"
+  }
+}

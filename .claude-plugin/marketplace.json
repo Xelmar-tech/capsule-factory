@@ -1,0 +1,75 @@
+{
+  "name": "claude-for-linear-pm",
+  "owner": {
+    "name": "Capxul",
+    "email": "hermes@abuusama.dev"
+  },
+  "description": "Linear project management team for coding agents — plan epics, manage PRs, run security scans, capture evidence, and generate reports",
+  "plugins": [
+    {
+      "name": "pm-core",
+      "source": "./plugins/vertical-plugins/pm-core",
+      "description": "Core project management: Linear epic planning, progress reporting, and agent orchestration"
+    },
+    {
+      "name": "code-quality",
+      "source": "./plugins/vertical-plugins/code-quality",
+      "description": "Code review and quality enforcement: PR lifecycle, TypeScript rules, lint gates"
+    },
+    {
+      "name": "security",
+      "source": "./plugins/vertical-plugins/security",
+      "description": "Security pipeline: STRIDE threat modeling, commit scanning, vulnerability validation, patch generation"
+    },
+    {
+      "name": "evidence-capture",
+      "source": "./plugins/vertical-plugins/evidence-capture",
+      "description": "Terminal, browser, and computer automation for testing, demos, QA, and proof artifacts"
+    },
+    {
+      "name": "research",
+      "source": "./plugins/vertical-plugins/research",
+      "description": "Autonomous optimization loops and codebase exploration: experiment, measure, keep improvements"
+    },
+    {
+      "name": "documentation",
+      "source": "./plugins/vertical-plugins/documentation",
+      "description": "Documentation generation: codebase wikis, humanized writing, visual presentations"
+    },
+    {
+      "name": "debugging",
+      "source": "./plugins/vertical-plugins/debugging",
+      "description": "Browser automation, frontend design review, HTTP interception, and API debugging"
+    },
+    {
+      "name": "epic-conductor",
+      "source": "./plugins/agent-plugins/epic-conductor",
+      "description": "Plans epics, breaks them into Linear issues, assigns work to coding agents, tracks completion, generates reports"
+    },
+    {
+      "name": "implementer",
+      "source": "./plugins/agent-plugins/implementer",
+      "description": "Manages PR lifecycle: creates PRs with proper conventions, follows up on reviews, enforces TypeScript rules"
+    },
+    {
+      "name": "analyst",
+      "source": "./plugins/agent-plugins/analyst",
+      "description": "Security scanning, vulnerability validation, and autonomous research loops on every PR"
+    },
+    {
+      "name": "reporter",
+      "source": "./plugins/agent-plugins/reporter",
+      "description": "Generates progress reports, velocity metrics, documentation updates, and stakeholder presentations"
+    },
+    {
+      "name": "qa-capture",
+      "source": "./plugins/agent-plugins/qa-capture",
+      "description": "Captures evidence: screenshots, demo videos, terminal recordings. Verifies deliverables and produces proof packs"
+    },
+    {
+      "name": "debug-guru",
+      "source": "./plugins/agent-plugins/debug-guru",
+      "description": "Browser automation, frontend design review, API interception and debugging across the full stack"
+    }
+  ]
+}

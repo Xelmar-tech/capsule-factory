@@ -1,0 +1,9 @@
+{
+  "name": "analyst",
+  "version": "1.0.0",
+  "description": "Security scanning, vulnerability validation, and autonomous research loops on every PR",
+  "author": {
+    "name": "Capxul",
+    "email": "hermes@abuusama.dev"
+  }
+}

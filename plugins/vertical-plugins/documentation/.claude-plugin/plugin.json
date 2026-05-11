@@ -1,0 +1,9 @@
+{
+  "name": "documentation",
+  "version": "1.0.0",
+  "description": "Documentation generation: codebase wikis, humanized writing, visual presentations",
+  "author": {
+    "name": "Capxul",
+    "email": "hermes@abuusama.dev"
+  }
+}
