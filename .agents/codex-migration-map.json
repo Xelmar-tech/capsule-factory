@@ -47,6 +47,11 @@
       "codex_manifest": "plugins/vertical-plugins/debugging/.codex-plugin/plugin.json"
     },
     {
+      "name": "observability",
+      "claude_manifest": "plugins/vertical-plugins/observability/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/vertical-plugins/observability/.codex-plugin/plugin.json"
+    },
+    {
       "name": "epic-conductor",
       "claude_manifest": "plugins/agent-plugins/epic-conductor/.claude-plugin/plugin.json",
       "codex_manifest": "plugins/agent-plugins/epic-conductor/.codex-plugin/plugin.json",
@@ -80,6 +85,13 @@
       "codex_manifest": "plugins/agent-plugins/debug-guru/.codex-plugin/plugin.json",
       "claude_agent": "plugins/agent-plugins/debug-guru/agents/debug-guru.md",
       "codex_agent_template": "plugins/agent-plugins/debug-guru/codex-agents/debug-guru.toml"
+    },
+    {
+      "name": "observability-analyst",
+      "claude_manifest": "plugins/agent-plugins/observability-analyst/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/agent-plugins/observability-analyst/.codex-plugin/plugin.json",
+      "claude_agent": "plugins/agent-plugins/observability-analyst/agents/observability-analyst.md",
+      "codex_agent_template": "plugins/agent-plugins/observability-analyst/codex-agents/observability-analyst.toml"
     }
   ],
   "commands": [
@@ -126,6 +138,10 @@
     {
       "claude_command": "plugins/vertical-plugins/documentation/commands/humanize.md",
       "codex_skill": "plugins/vertical-plugins/documentation/skills/human-writing/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/observability/commands/posthog.md",
+      "codex_skill": "plugins/vertical-plugins/observability/skills/posthog-investigate/SKILL.md"
     },
     {
       "claude_command": "plugins/vertical-plugins/evidence-capture/commands/demo.md",

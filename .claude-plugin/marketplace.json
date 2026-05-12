@@ -5,7 +5,7 @@
     "email": "aaron@capxul.com"
   },
   "metadata": {
-    "description": "Capxul Agent Team — a cohesive plugin ecosystem for managing Capxul's AI agent workforce. 7 vertical plugins providing shared skills and commands, plus 6 agent plugins with specialized agent definitions.",
+    "description": "Capxul Agent Team — a cohesive plugin ecosystem for managing Capxul's AI agent workforce. 9 vertical plugins providing shared skills and commands, plus 6 agent plugins with specialized agent definitions.",
     "version": "1.0.0"
   },
   "plugins": [
@@ -50,6 +50,11 @@
       "description": "Browser navigation, frontend debugging, API interception, and skill creation."
     },
     {
+      "name": "observability",
+      "source": "./plugins/vertical-plugins/observability",
+      "description": "PostHog-backed runtime observability: error tracking, analytics, logs, session replay, feature flags, SDK diagnostics, and production evidence for debugging."
+    },
+    {
       "name": "epic-conductor",
       "source": "./plugins/agent-plugins/epic-conductor",
       "description": "Master controller agent that orchestrates the team, plans epics, and routes work."
@@ -73,6 +78,11 @@
       "name": "debug-guru",
       "source": "./plugins/agent-plugins/debug-guru",
       "description": "Debugs APIs, navigates browsers, designs frontends, and creates skills."
+    },
+    {
+      "name": "observability-analyst",
+      "source": "./plugins/agent-plugins/observability-analyst",
+      "description": "Runtime evidence specialist for PostHog-backed debugging, analytics, error tracking, feature flags, logs, traces, and session replay."
     }
   ]
 }

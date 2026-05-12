@@ -1,0 +1,5 @@
+{
+  "name": "observability-analyst",
+  "version": "1.0.0",
+  "description": "Runtime evidence specialist for PostHog-backed debugging, analytics, error tracking, feature flags, logs, traces, and session replay."
+}

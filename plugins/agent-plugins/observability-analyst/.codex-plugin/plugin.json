@@ -1,0 +1,26 @@
+{
+  "name": "observability-analyst",
+  "version": "1.0.0",
+  "description": "Runtime evidence specialist for PostHog-backed debugging, analytics, error tracking, feature flags, logs, traces, and session replay.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "agent", "observability", "posthog", "analytics"],
+  "interface": {
+    "displayName": "Observability Analyst",
+    "shortDescription": "Gather PostHog runtime evidence",
+    "longDescription": "Provides a Codex custom-agent template for read-only PostHog investigations across errors, analytics, logs, traces, session replay, SDK health, and feature flags.",
+    "developerName": "Capxul",
+    "category": "Engineering",
+    "capabilities": ["Interactive"],
+    "defaultPrompt": [
+      "Use $capsule-setup to install the observability-analyst Codex agent.",
+      "Ask observability-analyst for PostHog runtime evidence."
+    ],
+    "screenshots": []
+  }
+}
