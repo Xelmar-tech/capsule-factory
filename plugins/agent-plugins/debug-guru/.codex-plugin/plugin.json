@@ -1,6 +1,6 @@
 {
   "name": "debug-guru",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Codex debug-guru template and debug pipeline skill for hard multi-layer bugs.",
   "author": {
     "name": "Capxul",

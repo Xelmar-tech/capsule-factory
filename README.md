@@ -6,7 +6,7 @@ Capxul's dual Claude Code + Codex plugin marketplace. A cohesive set of plugins 
 
 **9 vertical plugins** (shared skills + Claude slash commands + Codex skill UX):
 
-- **infra** — `/capsule-setup`, `/materialize-env` (Bitwarden MCP, env materialization, repo bootstrapping)
+- **infra** — `/onboard`, `/capsule-setup`, `/materialize-env` (guided setup, MCP checks, env materialization, repo bootstrapping)
 - **pm-core** — `/plan-epic`, `/report`, `/orchestrate` (Linear epic planning, status reports, team orchestration)
 - **code-quality** — `/pr`, `/review-pr`, `/simplify` (PR lifecycle, code review, TypeScript best practices)
 - **security** — `/security-scan`, `/threat-model` (security scanning, threat modeling)
@@ -34,7 +34,7 @@ Capxul's dual Claude Code + Codex plugin marketplace. A cohesive set of plugins 
 /plugin marketplace add Xelmar-tech/capsule-factory
 
 # Install in order:
-/plugin install infra@capsule-factory       # first — has /capsule-setup
+/plugin install infra@capsule-factory       # first — has /onboard and /capsule-setup
 /plugin install pm-core@capsule-factory     # second — coordination commands
 # then everything else as needed:
 /plugin install code-quality@capsule-factory
@@ -52,8 +52,11 @@ Capxul's dual Claude Code + Codex plugin marketplace. A cohesive set of plugins 
 /plugin install observability-analyst@capsule-factory
 
 # Then configure the MCPs the marketplace depends on
+/onboard --check
 /capsule-setup
 ```
+
+For a guided first-time setup in Claude, run `/onboard`. In Codex, run `$capsule-onboarding`. Both paths explain the verticals and agents, walk through install or refresh, validate MCP/connectors, check repo config, and recommend the next command for your goal.
 
 ### Codex
 
@@ -187,7 +190,7 @@ capsule-factory/
 │   └── validate-codex-migration.py    # Static drift validator
 ├── plugins/
 │   ├── vertical-plugins/              # Shared skills + slash commands
-│   │   ├── infra/                     # /capsule-setup, $capsule-setup, manage-secrets
+│   │   ├── infra/                     # /onboard, /capsule-setup, $capsule-setup, manage-secrets
 │   │   ├── pm-core/                   # /plan-epic, /report, /orchestrate + 3 skills
 │   │   ├── code-quality/              # /pr, /review-pr, /simplify + 6 skills
 │   │   ├── security/                  # /security-scan, /threat-model + 4 skills
@@ -228,6 +231,7 @@ Claude slash commands remain Claude-only. Codex uses skills/default prompts inst
 
 | Claude command    | Codex counterpart        | Plugin            | What it does                                  |
 |-------------------|--------------------------|-------------------|-----------------------------------------------|
+| `/onboard`        | `$capsule-onboarding`    | infra             | Guided install, update, MCP validation, and first-use setup |
 | `/capsule-setup`  | `$capsule-setup`         | infra             | Configure integrations and install agents     |
 | Claude-only setup docs | `$capsule-onboarding` | infra             | Explain install order, agent model, and updates |
 | `/materialize-env`| `$manage-secrets`        | infra             | Pull env files from vault tooling             |

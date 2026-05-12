@@ -6,13 +6,13 @@
   },
   "metadata": {
     "description": "Capxul Agent Team — a cohesive plugin ecosystem for managing Capxul's AI agent workforce. 9 vertical plugins providing shared skills and commands, plus 6 agent plugins with specialized agent definitions.",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "infra",
       "source": "./plugins/vertical-plugins/infra",
-      "description": "Agent infrastructure: MCP setup, env materialization from Bitwarden, per-repo config bootstrapping."
+      "description": "Agent infrastructure: onboarding, MCP setup, env materialization from Bitwarden, per-repo config bootstrapping."
     },
     {
       "name": "pm-core",

@@ -1,6 +1,6 @@
 ---
 name: debug-pipeline
-version: 1.0.0
+version: 1.1.0
 description: |
   Orchestration glue over the debugging vertical: browser-navigation, http-toolkit-intercept,
   frontend-design, and PostHog runtime evidence (plus evidence-capture target drivers when
