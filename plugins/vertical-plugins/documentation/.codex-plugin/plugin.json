@@ -1,0 +1,28 @@
+{
+  "name": "documentation",
+  "version": "1.0.0",
+  "description": "Wiki generation, humanized writing, and visual design.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "docs", "writing", "wiki"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Capsule Documentation",
+    "shortDescription": "Write docs, wikis, and visual assets",
+    "longDescription": "Generate repository documentation, humanize technical writing, and plan visual design or presentation artifacts.",
+    "developerName": "Capxul",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Use $wiki to document this repository.",
+      "Use $human-writing to humanize this prose.",
+      "Use $visual-design for visual documentation assets."
+    ],
+    "screenshots": []
+  }
+}

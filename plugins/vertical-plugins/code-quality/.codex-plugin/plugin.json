@@ -1,0 +1,28 @@
+{
+  "name": "code-quality",
+  "version": "1.0.0",
+  "description": "PR lifecycle, code review, and TypeScript best practices.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "pull-request", "review", "typescript"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Capsule Code Quality",
+    "shortDescription": "Create PRs and improve changed code",
+    "longDescription": "Open pull requests, address review feedback, simplify changed code, and apply focused TypeScript quality rules.",
+    "developerName": "Capxul",
+    "category": "Coding",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Use $create-pr to open a pull request.",
+      "Use $follow-up-on-pr to address review feedback.",
+      "Use $simplify to review and improve changed code."
+    ],
+    "screenshots": []
+  }
+}

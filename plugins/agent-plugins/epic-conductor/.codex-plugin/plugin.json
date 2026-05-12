@@ -1,0 +1,27 @@
+{
+  "name": "epic-conductor",
+  "version": "1.0.0",
+  "description": "Codex conductor template and scribe skill for coordinating a Linear epic across teammate agents.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "agent", "linear", "orchestration"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Epic Conductor",
+    "shortDescription": "Coordinate a Codex agent team",
+    "longDescription": "Provides the scribe reporting primitive and a Codex custom-agent template for coordinating Linear epic execution.",
+    "developerName": "Capxul",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Use $capsule-setup to install the epic-conductor Codex agent.",
+      "Use $scribe to emit an HTML report."
+    ],
+    "screenshots": []
+  }
+}

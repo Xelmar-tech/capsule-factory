@@ -1,0 +1,26 @@
+{
+  "name": "research",
+  "version": "1.0.0",
+  "description": "Code exploration and optimization experiments.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "research", "experiments", "optimization"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Capsule Research",
+    "shortDescription": "Run structured optimization research",
+    "longDescription": "Use isolated experiment loops to improve measurable targets and preserve evidence about which changes helped or regressed.",
+    "developerName": "Capxul",
+    "category": "Research",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Use $autoresearch to optimize this measurable target."
+    ],
+    "screenshots": []
+  }
+}

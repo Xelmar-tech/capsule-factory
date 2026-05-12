@@ -1,0 +1,27 @@
+{
+  "name": "qa-capture",
+  "version": "1.0.0",
+  "description": "Codex QA template and evidence pipeline skill for behavior verification.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "agent", "qa", "evidence"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "QA Capture",
+    "shortDescription": "Verify PR claims with evidence",
+    "longDescription": "Provides the evidence pipeline skill and a Codex custom-agent template for exercising running code and producing proof artifacts.",
+    "developerName": "Capxul",
+    "category": "Engineering",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Use $capsule-setup to install the qa-capture Codex agent.",
+      "Use $evidence-pipeline to verify PR claims."
+    ],
+    "screenshots": []
+  }
+}

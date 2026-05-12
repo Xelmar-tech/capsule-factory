@@ -1,0 +1,28 @@
+{
+  "name": "evidence-capture",
+  "version": "1.0.0",
+  "description": "Demo recording, verification, QA testing, and video composition with Remotion.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "qa", "evidence", "remotion"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Capsule Evidence Capture",
+    "shortDescription": "Verify behavior and capture proof",
+    "longDescription": "Drive web, desktop, CLI, and TUI flows; capture screenshots or recordings; render Remotion demo videos; and emit verification reports.",
+    "developerName": "Capxul",
+    "category": "Engineering",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Use $agent-control to capture proof for this flow.",
+      "Use $verify to verify this behavior claim.",
+      "Use $compose to render a demo artifact."
+    ],
+    "screenshots": []
+  }
+}

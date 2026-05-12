@@ -1,0 +1,28 @@
+{
+  "name": "infra",
+  "version": "1.0.1",
+  "description": "Agent infrastructure: Codex onboarding, team setup, connector checks, env materialization from Bitwarden or Vaultwarden, and per-repo config bootstrapping.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "agents", "secrets", "infrastructure", "onboarding"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Capsule Infra",
+    "shortDescription": "Onboard and set up Capsule Factory",
+    "longDescription": "Explain Capsule Factory's Codex install flow, install custom-agent templates, verify required connector or MCP availability, and materialize development env files without exposing secret values.",
+    "developerName": "Capxul",
+    "category": "Engineering",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Use $capsule-onboarding to explain Capsule Factory.",
+      "Use $capsule-setup to install the Codex agent team.",
+      "Use $manage-secrets to materialize development env files."
+    ],
+    "screenshots": []
+  }
+}
