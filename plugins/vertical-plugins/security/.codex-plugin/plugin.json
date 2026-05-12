@@ -1,0 +1,28 @@
+{
+  "name": "security",
+  "version": "1.0.0",
+  "description": "Security scanning, vulnerability validation, and threat modeling.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "security", "threat-model", "vulnerability"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Capsule Security",
+    "shortDescription": "Scan code and produce threat models",
+    "longDescription": "Review code changes for security issues, validate exploitability, and produce STRIDE threat models for systems and features.",
+    "developerName": "Capxul",
+    "category": "Security",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Use $commit-security-scan to scan this diff.",
+      "Use $threat-model-generation to model this system.",
+      "Use $vulnerability-validation to validate a finding."
+    ],
+    "screenshots": []
+  }
+}

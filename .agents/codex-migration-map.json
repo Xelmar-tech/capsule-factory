@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "summary": "Dual-target map for keeping Capsule Factory's Claude and Codex surfaces aligned.",
+  "marketplaces": {
+    "claude": ".claude-plugin/marketplace.json",
+    "codex": ".agents/plugins/marketplace.json"
+  },
+  "plugins": [
+    {
+      "name": "infra",
+      "claude_manifest": "plugins/vertical-plugins/infra/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/vertical-plugins/infra/.codex-plugin/plugin.json"
+    },
+    {
+      "name": "pm-core",
+      "claude_manifest": "plugins/vertical-plugins/pm-core/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/vertical-plugins/pm-core/.codex-plugin/plugin.json"
+    },
+    {
+      "name": "code-quality",
+      "claude_manifest": "plugins/vertical-plugins/code-quality/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/vertical-plugins/code-quality/.codex-plugin/plugin.json"
+    },
+    {
+      "name": "security",
+      "claude_manifest": "plugins/vertical-plugins/security/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/vertical-plugins/security/.codex-plugin/plugin.json"
+    },
+    {
+      "name": "evidence-capture",
+      "claude_manifest": "plugins/vertical-plugins/evidence-capture/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/vertical-plugins/evidence-capture/.codex-plugin/plugin.json"
+    },
+    {
+      "name": "research",
+      "claude_manifest": "plugins/vertical-plugins/research/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/vertical-plugins/research/.codex-plugin/plugin.json"
+    },
+    {
+      "name": "documentation",
+      "claude_manifest": "plugins/vertical-plugins/documentation/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/vertical-plugins/documentation/.codex-plugin/plugin.json"
+    },
+    {
+      "name": "debugging",
+      "claude_manifest": "plugins/vertical-plugins/debugging/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/vertical-plugins/debugging/.codex-plugin/plugin.json"
+    },
+    {
+      "name": "epic-conductor",
+      "claude_manifest": "plugins/agent-plugins/epic-conductor/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/agent-plugins/epic-conductor/.codex-plugin/plugin.json",
+      "claude_agent": "plugins/agent-plugins/epic-conductor/agents/epic-conductor.md",
+      "codex_agent_template": "plugins/agent-plugins/epic-conductor/codex-agents/epic-conductor.toml"
+    },
+    {
+      "name": "implementer",
+      "claude_manifest": "plugins/agent-plugins/implementer/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/agent-plugins/implementer/.codex-plugin/plugin.json",
+      "claude_agent": "plugins/agent-plugins/implementer/agents/implementer.md",
+      "codex_agent_template": "plugins/agent-plugins/implementer/codex-agents/implementer.toml"
+    },
+    {
+      "name": "analyst",
+      "claude_manifest": "plugins/agent-plugins/analyst/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/agent-plugins/analyst/.codex-plugin/plugin.json",
+      "claude_agent": "plugins/agent-plugins/analyst/agents/analyst.md",
+      "codex_agent_template": "plugins/agent-plugins/analyst/codex-agents/analyst.toml"
+    },
+    {
+      "name": "qa-capture",
+      "claude_manifest": "plugins/agent-plugins/qa-capture/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/agent-plugins/qa-capture/.codex-plugin/plugin.json",
+      "claude_agent": "plugins/agent-plugins/qa-capture/agents/qa-capture.md",
+      "codex_agent_template": "plugins/agent-plugins/qa-capture/codex-agents/qa-capture.toml"
+    },
+    {
+      "name": "debug-guru",
+      "claude_manifest": "plugins/agent-plugins/debug-guru/.claude-plugin/plugin.json",
+      "codex_manifest": "plugins/agent-plugins/debug-guru/.codex-plugin/plugin.json",
+      "claude_agent": "plugins/agent-plugins/debug-guru/agents/debug-guru.md",
+      "codex_agent_template": "plugins/agent-plugins/debug-guru/codex-agents/debug-guru.toml"
+    }
+  ],
+  "commands": [
+    {
+      "claude_command": "plugins/vertical-plugins/infra/commands/capsule-setup.md",
+      "codex_skill": "plugins/vertical-plugins/infra/skills/capsule-setup/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/infra/commands/materialize-env.md",
+      "codex_skill": "plugins/vertical-plugins/infra/skills/manage-secrets/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/pm-core/commands/plan-epic.md",
+      "codex_skill": "plugins/vertical-plugins/pm-core/skills/linear-epic-planning/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/pm-core/commands/orchestrate.md",
+      "codex_skill": "plugins/vertical-plugins/pm-core/skills/agent-orchestrator/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/pm-core/commands/report.md",
+      "codex_skill": "plugins/vertical-plugins/pm-core/skills/pm-reporting/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/code-quality/commands/pr.md",
+      "codex_skill": "plugins/vertical-plugins/code-quality/skills/create-pr/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/code-quality/commands/review-pr.md",
+      "codex_skill": "plugins/vertical-plugins/code-quality/skills/follow-up-on-pr/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/code-quality/commands/simplify.md",
+      "codex_skill": "plugins/vertical-plugins/code-quality/skills/simplify/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/security/commands/security-scan.md",
+      "codex_skill": "plugins/vertical-plugins/security/skills/commit-security-scan/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/security/commands/threat-model.md",
+      "codex_skill": "plugins/vertical-plugins/security/skills/threat-model-generation/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/documentation/commands/humanize.md",
+      "codex_skill": "plugins/vertical-plugins/documentation/skills/human-writing/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/evidence-capture/commands/demo.md",
+      "codex_skill": "plugins/vertical-plugins/evidence-capture/skills/agent-control/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/evidence-capture/commands/verify.md",
+      "codex_skill": "plugins/vertical-plugins/evidence-capture/skills/verify/SKILL.md"
+    },
+    {
+      "claude_command": "plugins/vertical-plugins/evidence-capture/commands/qa-test.md",
+      "codex_skill": "plugins/vertical-plugins/evidence-capture/skills/agent-control/SKILL.md"
+    }
+  ],
+  "codex_only_skills": [
+    {
+      "name": "capsule-onboarding",
+      "codex_skill": "plugins/vertical-plugins/infra/skills/capsule-onboarding/SKILL.md",
+      "reason": "Codex-specific onboarding for plugin install order, agent TOML installation, and marketplace updates."
+    }
+  ],
+  "runtime_terms": [
+    {
+      "claude": "TeamCreate",
+      "codex": "parent Codex session spawns custom subagents"
+    },
+    {
+      "claude": "SendMessage",
+      "codex": "parent Codex session sends scoped prompts to subagents"
+    },
+    {
+      "claude": "TaskOutput",
+      "codex": "parent Codex session waits for and summarizes subagent results"
+    },
+    {
+      "claude": "agents/*.md",
+      "codex": ".codex/agents/*.toml copied from plugin codex-agents templates"
+    },
+    {
+      "claude": "commands/*.md slash commands",
+      "codex": "skills invoked with $skill names and plugin default prompts"
+    }
+  ]
+}

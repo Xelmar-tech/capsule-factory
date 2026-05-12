@@ -1,0 +1,27 @@
+{
+  "name": "implementer",
+  "version": "1.0.0",
+  "description": "Codex implementer template and PR lifecycle skill for ticket-to-PR execution.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "agent", "implementation", "pull-request"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Implementer",
+    "shortDescription": "Implement scoped tickets",
+    "longDescription": "Provides the PR lifecycle skill and a Codex custom-agent template for scoped ticket-to-PR implementation.",
+    "developerName": "Capxul",
+    "category": "Coding",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Use $capsule-setup to install the implementer Codex agent.",
+      "Use $pr-lifecycle for ticket-to-PR execution."
+    ],
+    "screenshots": []
+  }
+}

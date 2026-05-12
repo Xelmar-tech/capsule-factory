@@ -1,0 +1,27 @@
+{
+  "name": "debug-guru",
+  "version": "1.0.0",
+  "description": "Codex debug-guru template and debug pipeline skill for hard multi-layer bugs.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "agent", "debugging", "root-cause"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Debug Guru",
+    "shortDescription": "Root-cause hard bugs",
+    "longDescription": "Provides a debug pipeline skill and a Codex custom-agent template for reproducing, instrumenting, and root-causing hard bugs.",
+    "developerName": "Capxul",
+    "category": "Coding",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Use $capsule-setup to install the debug-guru Codex agent.",
+      "Use $debug-pipeline to investigate a multi-layer bug."
+    ],
+    "screenshots": []
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "analyst",
+  "version": "1.0.0",
+  "description": "Codex analyst template and security deep-dive skill for read-only review work.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "agent", "security", "architecture"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Analyst",
+    "shortDescription": "Review security and architecture",
+    "longDescription": "Provides a security deep-dive skill and a Codex custom-agent template for read-only PR and subsystem analysis.",
+    "developerName": "Capxul",
+    "category": "Security",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Use $capsule-setup to install the analyst Codex agent.",
+      "Use $security-deep-dive for subsystem review."
+    ],
+    "screenshots": []
+  }
+}

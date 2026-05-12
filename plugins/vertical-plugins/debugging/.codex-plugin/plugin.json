@@ -1,0 +1,28 @@
+{
+  "name": "debugging",
+  "version": "1.0.0",
+  "description": "Browser navigation, frontend debugging, API interception, and skill creation.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "debugging", "browser", "frontend"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Capsule Debugging",
+    "shortDescription": "Debug browser, frontend, and network flows",
+    "longDescription": "Automate browser interactions, inspect frontend state, intercept HTTP traffic, and create reusable skills from repeated debugging workflows.",
+    "developerName": "Capxul",
+    "category": "Coding",
+    "capabilities": ["Interactive", "Write"],
+    "defaultPrompt": [
+      "Use $browser-navigation to inspect this frontend.",
+      "Use $http-toolkit-intercept to debug network traffic.",
+      "Use $frontend-design to improve this UI."
+    ],
+    "screenshots": []
+  }
+}

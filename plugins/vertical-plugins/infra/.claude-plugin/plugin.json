@@ -1,5 +1,5 @@
 {
   "name": "infra",
-  "version": "1.0.0",
-  "description": "Agent infrastructure: MCP setup, env materialization from Bitwarden, per-repo config bootstrapping."
+  "version": "1.0.1",
+  "description": "Agent infrastructure: Codex onboarding/setup, MCP setup, env materialization from Bitwarden, per-repo config bootstrapping."
 }
