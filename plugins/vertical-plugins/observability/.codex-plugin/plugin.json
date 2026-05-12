@@ -1,0 +1,27 @@
+{
+  "name": "observability",
+  "version": "1.0.0",
+  "description": "PostHog-backed runtime observability: error tracking, analytics, logs, session replay, feature flags, SDK diagnostics, and production evidence for debugging.",
+  "author": {
+    "name": "Capxul",
+    "email": "aaron@capxul.com",
+    "url": "https://github.com/Xelmar-tech"
+  },
+  "repository": "https://github.com/Xelmar-tech/capsule-factory",
+  "license": "MIT",
+  "keywords": ["codex", "observability", "posthog", "analytics", "debugging"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Capsule Observability",
+    "shortDescription": "Investigate runtime evidence with PostHog",
+    "longDescription": "Use PostHog-backed runtime evidence for error tracking, analytics, logs, traces, session replay, SDK health, feature flags, and production debugging questions.",
+    "developerName": "Capxul",
+    "category": "Engineering",
+    "capabilities": ["Interactive"],
+    "defaultPrompt": [
+      "Use $posthog-investigate to investigate runtime behavior.",
+      "Use PostHog evidence as read-only observations."
+    ],
+    "screenshots": []
+  }
+}

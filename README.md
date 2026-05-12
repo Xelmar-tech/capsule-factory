@@ -1,12 +1,12 @@
 # Capsule Factory
 
-Capxul's dual Claude Code + Codex plugin marketplace. A cohesive set of plugins for managing Capxul's AI agent workforce: 8 vertical plugins that ship shared skills, Claude slash commands, Codex skills/default prompts, and 5 agent plugins with specialized Claude agents plus Codex custom-agent templates.
+Capxul's dual Claude Code + Codex plugin marketplace. A cohesive set of plugins for managing Capxul's AI agent workforce: 9 vertical plugins that ship shared skills, Claude slash commands, Codex skills/default prompts, and 6 agent plugins with specialized Claude agents plus Codex custom-agent templates.
 
 ## What's inside
 
-**8 vertical plugins** (shared skills + Claude slash commands + Codex skill UX):
+**9 vertical plugins** (shared skills + Claude slash commands + Codex skill UX):
 
-- **infra** — `/capsule-setup`, `/materialize-env` (Bitwarden MCP, env materialization, repo bootstrapping)
+- **infra** — `/onboard`, `/capsule-setup`, `/materialize-env` (guided setup, MCP checks, env materialization, repo bootstrapping)
 - **pm-core** — `/plan-epic`, `/report`, `/orchestrate` (Linear epic planning, status reports, team orchestration)
 - **code-quality** — `/pr`, `/review-pr`, `/simplify` (PR lifecycle, code review, TypeScript best practices)
 - **security** — `/security-scan`, `/threat-model` (security scanning, threat modeling)
@@ -14,14 +14,16 @@ Capxul's dual Claude Code + Codex plugin marketplace. A cohesive set of plugins 
 - **research** — autoresearch skill (auto-invoked)
 - **documentation** — `/humanize`, wiki skill (auto-invoked for wiki generation)
 - **debugging** — browser navigation, frontend design, HTTP intercept, skill creation (auto-invoked)
+- **observability** — `/posthog` (PostHog error tracking, analytics, logs, replay, flags, SDK diagnostics)
 
-**5 agent plugins** (specialized agents with their own sub-skills):
+**6 agent plugins** (specialized agents with their own sub-skills):
 
 - **epic-conductor** — Team owner; orchestrates the workforce per epic, owns Linear writes, runs the decision log via `scribe`
 - **implementer** — End-to-end coding: ticket → PR → address review feedback
 - **analyst** — Security and architecture review; posts PR comments, produces threat models via `scribe`
 - **qa-capture** — Verification and demos; produces MP4 + HTML verify reports via `scribe`
 - **debug-guru** — Multi-layer debugging (browser + frontend + API); produces root-cause writeups
+- **observability-analyst** — Runtime evidence specialist; uses PostHog to answer what is happening in production/staging
 
 ## Quick start
 
@@ -32,7 +34,7 @@ Capxul's dual Claude Code + Codex plugin marketplace. A cohesive set of plugins 
 /plugin marketplace add Xelmar-tech/capsule-factory
 
 # Install in order:
-/plugin install infra@capsule-factory       # first — has /capsule-setup
+/plugin install infra@capsule-factory       # first — has /onboard and /capsule-setup
 /plugin install pm-core@capsule-factory     # second — coordination commands
 # then everything else as needed:
 /plugin install code-quality@capsule-factory
@@ -40,16 +42,21 @@ Capxul's dual Claude Code + Codex plugin marketplace. A cohesive set of plugins 
 /plugin install evidence-capture@capsule-factory
 /plugin install documentation@capsule-factory
 /plugin install debugging@capsule-factory
+/plugin install observability@capsule-factory
 /plugin install research@capsule-factory
 /plugin install epic-conductor@capsule-factory
 /plugin install implementer@capsule-factory
 /plugin install analyst@capsule-factory
 /plugin install qa-capture@capsule-factory
 /plugin install debug-guru@capsule-factory
+/plugin install observability-analyst@capsule-factory
 
 # Then configure the MCPs the marketplace depends on
+/onboard --check
 /capsule-setup
 ```
+
+For a guided first-time setup in Claude, run `/onboard`. In Codex, run `$capsule-onboarding`. Both paths explain the verticals and agents, walk through install or refresh, validate MCP/connectors, check repo config, and recommend the next command for your goal.
 
 ### Codex
 
@@ -57,6 +64,7 @@ Install the Codex marketplace from `.agents/plugins/marketplace.json`, then inst
 
 - `infra` for `$capsule-onboarding`, `$capsule-setup`, and `$manage-secrets`
 - `pm-core` for `$plan-epic`, `$report`, and `$agent-orchestrator`
+- `observability` for `$posthog-investigate`
 - one or more agent plugins for Codex custom-agent templates
 
 If you are not sure what to install next, run `$capsule-onboarding` after installing `infra`.
@@ -69,6 +77,7 @@ After installing the plugins, run `$capsule-setup` in the consuming repo. The se
 .codex/agents/analyst.toml
 .codex/agents/qa-capture.toml
 .codex/agents/debug-guru.toml
+.codex/agents/observability-analyst.toml
 ```
 
 Codex limitation to remember: marketplace plugins can ship skills and tools, but runnable custom subagents are discovered from `.codex/agents/` or `~/.codex/agents/`. Capsule Factory therefore ships agent templates under each agent plugin and uses `$capsule-setup` to install them into the consuming repo.
@@ -90,6 +99,22 @@ Configured by `/capsule-setup` in Claude or `$capsule-setup` in Codex:
 | Linear      | Read/write Linear issues + epics            | Connector/MCP/API token       |
 | GitHub      | PR/issue operations                         | Connector/CLI/API token       |
 | Bitwarden or Vaultwarden | Decrypt vault items for env materialization | Existing local capability |
+
+### Recommended MCPs
+
+Configured by `/capsule-setup` in Claude or `$capsule-setup` in Codex when available:
+
+| Integration | Purpose                                     | Required material             |
+|-------------|---------------------------------------------|-------------------------------|
+| PostHog     | Runtime evidence: errors, logs, analytics, replay, flags, SDK health | OAuth or `POSTHOG_PERSONAL_API_KEY` |
+
+PostHog's official hosted MCP endpoint is `https://mcp.posthog.com/mcp`. Prefer the official wizard when the client supports it:
+
+```bash
+npx @posthog/wizard mcp add
+```
+
+For agent use, prefer a project/org-pinned key created with PostHog's MCP Server preset. Pin scope with `x-posthog-organization-id`, `x-posthog-project-id`, `organization_id`, or `project_id`, and narrow tool exposure with `features=` or `tools=` where your client supports it. Do not put PostHog secrets into this repository.
 
 ### Per-repo config: `.capsule-factory.yml`
 
@@ -145,7 +170,7 @@ $capsule-setup
 $agent-orchestrator CAP-123
 #   -> preflights environment and integrations
 #   -> starts epic-conductor as a Codex custom subagent
-#   -> conductor selects implementer, analyst, qa-capture, or debug-guru roles
+#   -> conductor selects implementer, analyst, qa-capture, debug-guru, or observability-analyst roles
 
 # 5. Weekly check-in
 $pm-reporting
@@ -165,20 +190,22 @@ capsule-factory/
 │   └── validate-codex-migration.py    # Static drift validator
 ├── plugins/
 │   ├── vertical-plugins/              # Shared skills + slash commands
-│   │   ├── infra/                     # /capsule-setup, $capsule-setup, manage-secrets
+│   │   ├── infra/                     # /onboard, /capsule-setup, $capsule-setup, manage-secrets
 │   │   ├── pm-core/                   # /plan-epic, /report, /orchestrate + 3 skills
 │   │   ├── code-quality/              # /pr, /review-pr, /simplify + 6 skills
 │   │   ├── security/                  # /security-scan, /threat-model + 4 skills
 │   │   ├── evidence-capture/          # /demo, /verify, /qa-test + 10 skills + Remotion
 │   │   ├── research/                  # autoresearch skill
 │   │   ├── documentation/             # /humanize, wiki, human-writing, visual-design
-│   │   └── debugging/                 # 4 debugging skills
+│   │   ├── debugging/                 # 4 debugging skills
+│   │   └── observability/             # /posthog + PostHog investigation skill
 │   └── agent-plugins/                 # Claude agents + Codex TOML templates + skills
 │       ├── epic-conductor/            # @epic-conductor, codex-agents template, scribe
 │       ├── implementer/               # @implementer, codex-agents template, pr-lifecycle
 │       ├── analyst/                   # @analyst, codex-agents template, security-deep-dive
 │       ├── qa-capture/                # @qa-capture, codex-agents template, evidence-pipeline
-│       └── debug-guru/                # @debug-guru, codex-agents template, debug-pipeline
+│       ├── debug-guru/                # @debug-guru, codex-agents template, debug-pipeline
+│       └── observability-analyst/     # @observability-analyst, codex-agents template
 └── README.md
 ```
 
@@ -194,6 +221,7 @@ All reporting agents emit HTML via the shared `scribe` skill (lives in `epic-con
 - `reports/YYYY-MM-DD-pr<n>-verify.html` — qa-capture verify report
 - `reports/YYYY-MM-DD-epic-<id>.html` — epic-conductor's living overview
 - `reports/YYYY-MM-DD-debug-<topic>.html` — debug-guru root-cause writeup
+- `reports/YYYY-MM-DD-observability-<topic>.html` — observability-analyst runtime evidence report
 
 Scribe defines the schema for each kind and emits self-contained HTML (inline CSS, no JS, no external assets).
 
@@ -203,6 +231,7 @@ Claude slash commands remain Claude-only. Codex uses skills/default prompts inst
 
 | Claude command    | Codex counterpart        | Plugin            | What it does                                  |
 |-------------------|--------------------------|-------------------|-----------------------------------------------|
+| `/onboard`        | `$capsule-onboarding`    | infra             | Guided install, update, MCP validation, and first-use setup |
 | `/capsule-setup`  | `$capsule-setup`         | infra             | Configure integrations and install agents     |
 | Claude-only setup docs | `$capsule-onboarding` | infra             | Explain install order, agent model, and updates |
 | `/materialize-env`| `$manage-secrets`        | infra             | Pull env files from vault tooling             |
@@ -215,6 +244,7 @@ Claude slash commands remain Claude-only. Codex uses skills/default prompts inst
 | `/security-scan`  | `$commit-security-scan`  | security          | Scan current diff / commit                    |
 | `/threat-model`   | `$threat-model-generation` | security        | Generate a threat model                       |
 | `/humanize`       | `$human-writing`         | documentation     | Rewrite AI-flavored prose                     |
+| `/posthog`        | `$posthog-investigate`   | observability     | Investigate runtime behavior with PostHog evidence |
 | `/demo`           | `$agent-control`         | evidence-capture  | Plan + record a demo video                    |
 | `/verify`         | `$verify`                | evidence-capture  | Verify a PR against its claims                |
 | `/qa-test`        | `$agent-control`         | evidence-capture  | Run QA flows + capture evidence               |
@@ -230,6 +260,7 @@ Claude agents are invoked via `@`. Codex agents are installed as `.codex/agents/
 | analyst | `plugins/agent-plugins/analyst/agents/analyst.md` | `plugins/agent-plugins/analyst/codex-agents/analyst.toml` |
 | qa-capture | `plugins/agent-plugins/qa-capture/agents/qa-capture.md` | `plugins/agent-plugins/qa-capture/codex-agents/qa-capture.toml` |
 | debug-guru | `plugins/agent-plugins/debug-guru/agents/debug-guru.md` | `plugins/agent-plugins/debug-guru/codex-agents/debug-guru.toml` |
+| observability-analyst | `plugins/agent-plugins/observability-analyst/agents/observability-analyst.md` | `plugins/agent-plugins/observability-analyst/codex-agents/observability-analyst.toml` |
 
 ## Maintenance
 

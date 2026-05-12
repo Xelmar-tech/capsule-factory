@@ -5,30 +5,34 @@ argument-hint: '[--scope user|project]'
 
 # /install-team
 
-Installs all 13 plugins (7 vertical + 6 agent) in one command.
+Installs all 15 plugins (9 vertical + 6 agent) in one command.
 
 ## What Gets Installed
 
 **Vertical Plugins:**
-1. `pm-core` — Linear epic planning, reporting, orchestration
-2. `code-quality` — PR lifecycle, code review, TypeScript best practices
-3. `security` — Security scanning, vulnerability validation, threat modeling
-4. `evidence-capture` — Demo recording, verification, QA testing, Remotion video pipeline
-5. `research` — Code exploration, optimization experiments
-6. `documentation` — Wiki generation, humanized writing, visual design
-7. `debugging` — Browser navigation, frontend debugging, API interception, skill creation
+1. `infra` — `/onboard`, MCP setup, env materialization, repo bootstrapping
+2. `pm-core` — Linear epic planning, reporting, orchestration
+3. `code-quality` — PR lifecycle, code review, TypeScript best practices
+4. `security` — Security scanning, vulnerability validation, threat modeling
+5. `evidence-capture` — Demo recording, verification, QA testing, Remotion video pipeline
+6. `research` — Code exploration, optimization experiments
+7. `documentation` — Wiki generation, humanized writing, visual design
+8. `debugging` — Browser navigation, frontend debugging, API interception, skill creation
+9. `observability` — PostHog runtime evidence, analytics, error tracking, replay, flags
 
 **Agent Plugins:**
 1. `epic-conductor` — Master controller agent
 2. `implementer` — PR lifecycle agent
 3. `analyst` — Security analysis agent
-4. `reporter` — Documentation and reporting agent
+4. `observability-analyst` — PostHog runtime evidence agent
 5. `qa-capture` — Evidence and demo agent
 6. `debug-guru` — Debugging and frontend agent
 
 ## MCP Setup
 
-After installation, configure these MCP servers:
+After installation, run `/onboard --check` for a guided validation pass or `/capsule-setup` to configure MCPs directly.
+
+Required MCP servers:
 
 ### Linear
 ```json
@@ -37,7 +41,7 @@ After installation, configure these MCP servers:
     "linear": {
       "command": "npx",
       "args": ["-y", "@linear/mcp-server"],
-      "env": { "LINEAR_API_KEY": "your-api-key" }
+      "env": ["LINEAR_API_KEY"]
     }
   }
 }
@@ -50,7 +54,7 @@ After installation, configure these MCP servers:
     "github": {
       "command": "npx",
       "args": ["-y", "@github/mcp-server"],
-      "env": { "GITHUB_PERSONAL_ACCESS_TOKEN": "your-token" }
+      "env": ["GITHUB_PERSONAL_ACCESS_TOKEN"]
     }
   }
 }
@@ -63,11 +67,29 @@ After installation, configure these MCP servers:
     "bitwarden": {
       "command": "npx",
       "args": ["-y", "@bitwarden/sdk-napi"],
-      "env": { "BW_ACCESS_TOKEN": "your-token" }
+      "env": ["BW_ACCESS_TOKEN"]
     }
   }
 }
 ```
+
+Recommended MCP server:
+
+### PostHog
+
+Prefer the official wizard:
+
+```bash
+npx @posthog/wizard mcp add
+```
+
+Manual endpoint:
+
+```text
+https://mcp.posthog.com/mcp
+```
+
+Use OAuth when supported, or a PostHog personal API key created with the MCP Server preset. Pin project/org scope where possible and never commit or print the key.
 
 ## Evidence Capture Prerequisites
 
@@ -99,6 +121,7 @@ sudo apt-get install -y cage wtype
 After installation, verify with:
 ```bash
 /plugins list
+/onboard --check
 ```
 
-You should see all 13 plugins registered.
+You should see all 15 plugins registered, and `/onboard --check` should report MCP and repo-config gates as `ok`, `missing`, or `blocked`.

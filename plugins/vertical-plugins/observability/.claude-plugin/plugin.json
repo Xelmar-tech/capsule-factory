@@ -1,0 +1,5 @@
+{
+  "name": "observability",
+  "version": "1.0.0",
+  "description": "PostHog-backed runtime observability: error tracking, analytics, logs, session replay, feature flags, SDK diagnostics, and production evidence for debugging."
+}

@@ -1,12 +1,12 @@
 ---
 name: debug-pipeline
-version: 1.0.0
+version: 1.1.0
 description: |
   Orchestration glue over the debugging vertical: browser-navigation, http-toolkit-intercept,
-  and frontend-design (plus evidence-capture target drivers when reproduction needs them).
-  Use when debug-guru is dispatched on a multi-layer bug that touches browser + network +
-  frontend state. For single-layer bugs (just a network trace, just DOM inspection), call
-  the underlying skill directly.
+  frontend-design, and PostHog runtime evidence (plus evidence-capture target drivers when
+  reproduction needs them). Use when debug-guru is dispatched on a multi-layer bug that
+  touches browser + network + frontend state, or when production/staging telemetry can
+  narrow the investigation. For single-layer bugs, call the underlying skill directly.
 ---
 
 # Debug pipeline
@@ -24,6 +24,7 @@ For single-layer bugs, call the layer's skill directly:
 - DOM/UI state → `frontend-design`
 - Network only → `http-toolkit-intercept`
 - Browser navigation only → `browser-navigation`
+- Runtime telemetry → `posthog-investigate` / `observability-analyst`
 
 ## The layer model
 
@@ -39,6 +40,10 @@ For single-layer bugs, call the layer's skill directly:
         │  responses, latency)        │
         ├─────────────────────────────┤
         │  Backend (logs, traces)     │  Bash + tailing logs
+        ├─────────────────────────────┤
+        │  Runtime observability      │  posthog-investigate /
+        │  (errors, logs, replays,    │  observability-analyst
+        │  flags, analytics, SDK)     │
         └─────────────────────────────┘
 ```
 
@@ -58,6 +63,8 @@ From the symptom, figure out which two adjacent layers are disagreeing. Don't in
 | "Response is wrong"                        | Network ↔ Backend          |
 | "Works in dev, not in prod"                | Network (env/CORS) or Backend (config) |
 | "Intermittent — sometimes works"           | Race across two layers; need timestamps |
+| "Users saw errors in prod"                 | Runtime observability ↔ Code/Backend |
+| "Event/flag/replay proves X"               | Runtime observability ↔ Frontend/Backend |
 
 ### 2. Set up the instrumentation
 
@@ -66,6 +73,7 @@ For the identified seam, load the relevant pair of skills and set up the capture
 - Browser ↔ Frontend: `browser-navigation` to drive, `frontend-design` to read React state at known points (use the `useDebugValue` / DevTools hook trick, or temporary `console.log` injections)
 - Frontend ↔ Network: `frontend-design` to read state, `http-toolkit-intercept` to capture the requests and responses with timestamps
 - Network ↔ Backend: `http-toolkit-intercept` plus Bash-tailing the backend logs
+- Runtime observability ↔ Code/Backend: `posthog-investigate` or `observability-analyst` to identify error groups, events, logs, traces, sessions, SDK health, and flag state; then map those identifiers to code paths before local reproduction or instrumentation
 
 Use the `evidence-capture` target drivers (`agent-browser`, `agent-cli`) to **drive** the reproduction reliably. Manual clicking is fine for one-off; for an intermittent bug you need scripted repro across many runs.
 
@@ -99,6 +107,7 @@ Either clean them up directly or hand a list to debug-guru's cleanup step.
 | Browser      | `browser-navigation`       | `agent-browser` (Chrome MCP / Playwright)|
 | Frontend     | `frontend-design`          | (driven via browser)                      |
 | Network      | `http-toolkit-intercept`   | (proxy)                                   |
+| Runtime observability | `posthog-investigate` / `observability-analyst` | PostHog MCP |
 | TUI / CLI    | (not in debugging vertical)| `agent-cli` + `pty-capture` (evidence-capture) |
 
 For CLI/TUI debugging, the evidence-capture drivers replace browser-level tools. The seam model still applies — CLI ↔ Network is the most common cross-layer CLI bug.
